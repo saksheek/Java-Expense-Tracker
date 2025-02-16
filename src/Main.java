@@ -15,8 +15,9 @@ public class Main {
             System.out.println("4. Set Budget Limit");
             System.out.println("5. Generate Monthly Report");
             System.out.println("6. Delete a expense");
-            System.out.println("7. Export Expenses to CSV");
-            System.out.println("8. Exit");
+            System.out.println("7. View Expenses by Category");
+            System.out.println("8. Export Expenses to CSV");
+            System.out.println("9. Exit");
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
@@ -77,13 +78,20 @@ public class Main {
                     break;
 
                 case 7:
+                    System.out.print("Enter category to filter (FOOD, TRANSPORT, BILLS, ENTERTAINMENT, SHOPPING, OTHER): ");
+                    String catInput = scanner.nextLine().toUpperCase();
+                    Category cat = Category.valueOf(catInput);
+                    manager.viewExpensesByCategory(cat);
+                    break;
+
+                case 8:
                     System.out.print("Enter the CSV file path to export (e.g., C:\\\\Users\\\\YourName\\\\Documents\\\\expenses.csv): ");
                     String path = scanner.nextLine();
                     manager.exportExpensesToCSV(path);
                     break;
                     //C:\Users\Sakshee\Documents\ArduinoData\expenses.csv
 
-                case 8:
+                case 9:
                     System.out.println("Exiting... Goodbye!");
                     scanner.close();
                     System.exit(0);

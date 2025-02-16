@@ -61,6 +61,15 @@ public class ExpenseManager {
         return getTotalExpenses() > budgetLimit;
     }
 
+    public void viewExpensesByCategory(Category category) {
+        System.out.println("Expenses for category: " + category);
+        for (Expense expense : expenses) {
+            if (expense.getCategory() == category) {
+                System.out.println(expense);
+            }
+        }
+    }
+
     private void saveExpensesToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_NAME))) {
             for (Expense expense : expenses) {
